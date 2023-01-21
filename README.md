@@ -18,5 +18,7 @@
 
   `mvn clean install`
   
+  `mvn package`  
+  
  `java -jar target/dsv-converter-1.0-SNAPSHOT.jar DSV_input1.txt output.json ',' `
 

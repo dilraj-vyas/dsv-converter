@@ -15,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.stream.Stream;
 
+import com.dsv.converter.constant.DateTimePatternConstant;
 import com.dsv.converter.model.Employee;
 import com.dsv.converter.service.Converter;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -80,15 +81,15 @@ public class DsvToJsonlConverter implements Converter {
         String gender = record.get(3);
         LocalDate dob = null;
         try {
-            DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern(DateTimePatternConstant.DATE_PATTERN);
             dob = LocalDate.parse(record.get(4), formatter1);
         } catch (DateTimeParseException e) {
             try {
-                DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern(DateTimePatternConstant.DATETIME_PATTERN_1);
                 dob = LocalDate.parse(record.get(4), formatter2);
             } catch (DateTimeParseException e1) {
                 try {
-                    DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    DateTimeFormatter formatter3 = DateTimeFormatter.ofPattern(DateTimePatternConstant.DATE_PATTERN_2);
                     dob = LocalDate.parse(record.get(4), formatter3);
                 } catch (DateTimeParseException dateTimeParseException) {
                     log.error("Unable to parse the date strings: {}", e.getMessage());
