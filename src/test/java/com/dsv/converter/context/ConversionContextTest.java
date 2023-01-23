@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.dsv.converter.service.impl.DsvToJsonlConverter;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ConversionContextTest {
 
@@ -26,7 +28,11 @@ public class ConversionContextTest {
         char delimiter = ',';
         conversionContext.executeConversion(inputFile, outputFile, delimiter);
         File output = new File(outputFile);
+        ObjectMapper mapper = new ObjectMapper();
+        File jsonFile = new File(outputFile);
+        JsonNode jsonNode = mapper.readTree(jsonFile);
         Assert.assertTrue(output.exists() && output.isFile() && output.canRead());
+        Assert.assertNotNull(jsonNode);
     }
 
     @Test
@@ -36,7 +42,11 @@ public class ConversionContextTest {
         char delimiter = '|';
         conversionContext.executeConversion(inputFile, outputFile, delimiter);
         File output = new File(outputFile);
+        ObjectMapper mapper = new ObjectMapper();
+        File jsonFile = new File(outputFile);
+        JsonNode jsonNode = mapper.readTree(jsonFile);
         Assert.assertTrue(output.exists() && output.isFile() && output.canRead());
+        Assert.assertNotNull(jsonNode);
     }
 
     @Test
@@ -46,7 +56,11 @@ public class ConversionContextTest {
         char delimiter = ',';
         conversionContext.executeConversion(inputFile, outputFile, delimiter);
         File output = new File(outputFile);
+        ObjectMapper mapper = new ObjectMapper();
+        File jsonFile = new File(outputFile);
+        JsonNode jsonNode = mapper.readTree(jsonFile);
         Assert.assertTrue(output.exists() && output.isFile() && output.canRead());
+        Assert.assertNotNull(jsonNode);
     }
 
 }
