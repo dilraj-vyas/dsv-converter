@@ -26,7 +26,7 @@ public class ConversionContextTest {
         char delimiter = ',';
         conversionContext.executeConversion(inputFile, outputFile, delimiter);
         File output = new File(outputFile);
-        Assert.assertTrue(output.exists());
+        Assert.assertTrue(output.exists() && output.isFile() && output.canRead());
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ConversionContextTest {
         char delimiter = '|';
         conversionContext.executeConversion(inputFile, outputFile, delimiter);
         File output = new File(outputFile);
-        Assert.assertTrue(output.exists());
+        Assert.assertTrue(output.exists() && output.isFile() && output.canRead());
     }
 
     @Test
@@ -46,7 +46,7 @@ public class ConversionContextTest {
         char delimiter = ',';
         conversionContext.executeConversion(inputFile, outputFile, delimiter);
         File output = new File(outputFile);
-        Assert.assertTrue(output.exists());
+        Assert.assertTrue(output.exists() && output.isFile() && output.canRead());
     }
 
 }

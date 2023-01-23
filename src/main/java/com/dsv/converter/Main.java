@@ -11,6 +11,7 @@ public class Main {
             String inputFile = args[0];
             String outputFile = args[1];
             char delimiter = args[2].charAt(0);
+
             Converter dsvToJsonlConverter = new DsvToJsonlConverter();
             ConversionContext context = new ConversionContext(dsvToJsonlConverter);
             long startTime = System.currentTimeMillis();
